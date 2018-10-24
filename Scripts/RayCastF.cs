@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class RayCastF : MonoBehaviour {
 
-	Transform camera;
+	Transform myCamera;
 	public Ray ray;
 	// Use this for initialization
 	void Start () {
-		camera = Camera.main.transform;
+		if(GameObject.FindGameObjectWithTag("EditorOnly").transform != null)
+		myCamera = GameObject.FindGameObjectWithTag("EditorOnly").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		ray = new Ray(camera.position, camera.rotation * Vector3.forward * 15);
+		ray = new Ray(myCamera.position, 
+		myCamera.rotation * Vector3.forward * 15);
+		Debug.DrawRay(myCamera.position, 
+		myCamera.rotation * Vector3.forward * 15, Color.red);
 	}
 }

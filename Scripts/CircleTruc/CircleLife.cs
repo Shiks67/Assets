@@ -8,15 +8,13 @@ public class CircleLife : MonoBehaviour
 
     private Vector3 lastSize;
     private Vector3 currentSize;
-    private float missTimer = 2f;
-    private int nbOfChange;
+    private int nbOfSwitch;
     private float limitTimer;
     public float TTFF;
     private bool isBigger, isSmaller;
     public bool isTTFF;
     private SpawnCircle sc;
     private int index;
-    private float life = 3f;
 
     public void Init(int index)
     {
@@ -26,77 +24,76 @@ public class CircleLife : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        nbOfChange = 0;
+        nbOfSwitch = 0;
         lastSize = gameObject.transform.localScale;
         var gameC = GameObject.Find("Quadri");
         sc = gameC.GetComponent<SpawnCircle>();
         isSmaller = true;
         isBigger = true;
         isTTFF = true;
+
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if there is more than 1 circle, return
         if (GameObject.FindGameObjectsWithTag("hitCircle").Length > 1)
             return;
-        if (isTTFF)
+        if (isTTFF) //update TTFF time until the circle is focused by the gaze point
             TTFF += Time.deltaTime;
+        //current size of the circle
         currentSize = gameObject.transform.localScale;
         if (currentSize.x < lastSize.x)
         {
             Reducing();
+            //put isTTFF false so the TTFF time doesn't update anymore
             isTTFF = false;
         }
         if (currentSize.x > lastSize.x)
         {
             Extending();
         }
-        if (currentSize.x <= 0 || nbOfChange > 5)
+        //if the size of the circle is 0 or less OR if the size edit switched more than 5 times
+        if (currentSize.x <= 0 || nbOfSwitch > 5)
         {
+            //save the finalsize of the circle and destroy it
             sc.circleFinalSize[index] = gameObject.transform.localScale.x;
             Destroy(gameObject);
         }
+        //every second reset the number of switch between reducing and extending the circle's size
         limitTimer -= Time.deltaTime;
         if (limitTimer < 0)
         {
             limitTimer = 1f;
-            nbOfChange = 0;
+            nbOfSwitch = 0;
         }
-
-        life -= Time.deltaTime;
-        if (life < 0)
-        {
-            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
-            Destroy(gameObject);
-        }
-
     }
 
+    /// <summary>
+    /// update circle's last size, and increment the number of switch put the reducing bool at false and the extending one to true
+    /// </summary>
     private void Reducing()
     {
         lastSize = currentSize;
-        missTimer = 1f;
         if (isSmaller)
         {
-            nbOfChange++;
+            nbOfSwitch++;
             isSmaller = false;
             isBigger = true;
         }
     }
 
+    /// <summary>
+    /// update circle's last size, and increment the number of switch put the extending bool at false and the reducing one to true
+    /// </summary>
     private void Extending()
     {
-        missTimer -= Time.deltaTime;
         lastSize = currentSize;
-        if (missTimer < 0f)
-        {
-            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
-            Destroy(gameObject);
-        }
         if (isBigger)
         {
-            nbOfChange++;
+            nbOfSwitch++;
             isBigger = false;
             isSmaller = true;
         }

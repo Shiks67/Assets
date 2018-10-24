@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class SpawnCircle : MonoBehaviour
@@ -17,17 +18,27 @@ public class SpawnCircle : MonoBehaviour
 
     private int index;
     private GameObject canvasParent;
+    public Text countObj;
+    private float countDown = 3f;
 
     // Use this for initialization
     void Start()
     {
         canvasParent = GameObject.Find("Quadri");
         index = 0;
+        Destroy(countObj, 3f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        countDown -= Time.deltaTime;
+        if (countDown > 0)
+        {
+            countObj.text = System.Math.Round(countDown, 0).ToString();
+            return;
+        }
+
         if (GameObject.FindGameObjectWithTag("hitCircle") == null)
         {
             if (isVisited.Contains(false))
@@ -47,6 +58,11 @@ public class SpawnCircle : MonoBehaviour
         }
     }
 
+    /// <summary> 
+    /// Create a new circle with his id's informations 
+    /// </summary>
+    /// <param name="id">id of the circle in the array that contain all the positions</param>
+    /// <param name="result">if true the circle will have the final size (after calibration test)</param>
     private void newCircle(int id, bool result = false)
     {
         GameObject newObject = Instantiate(spawnObject);
@@ -62,6 +78,9 @@ public class SpawnCircle : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show every circle with their final size
+    /// </summary>
     public void Result()
     {
         DestroyAllCircles();
@@ -71,6 +90,9 @@ public class SpawnCircle : MonoBehaviour
         }
     }
 
+    ///<summary> Destroy every GameObject tagged "hitCircle"
+    ///<typeparam name="Retry">if true the size and visited positions are reseted</typeparam>
+    ///</summary>
     public void DestroyAllCircles(bool retry = false)
     {
         if (retry)

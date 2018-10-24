@@ -5,16 +5,18 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
-    private CircleData da;
+    private RayCastF da;
     private RaycastHit hit;
-    private Camera mainCamera;
+    // private Camera mainCamera;
+    private GameObject mainCamera;
     private SpawnCircle sc;
 
     // Use this for initialization
     void Start()
     {
-        mainCamera = Camera.main;
-        da = mainCamera.GetComponent<CircleData>();
+        // mainCamera = Camera.main;
+        mainCamera = GameObject.FindGameObjectWithTag("EditorOnly").gameObject;
+        da = mainCamera.GetComponent<RayCastF>();
         var spawnCircle = GameObject.Find("Quadri");
         sc = spawnCircle.GetComponent<SpawnCircle>();
     }
@@ -24,30 +26,34 @@ public class GameController : MonoBehaviour
     {
         if (Physics.Raycast(da.ray, out hit))
         {
-            if (GameObject.FindGameObjectsWithTag("hitCircle").Length <= 1)
+            //if there is max 1 circle on the grid
+            if (GameObject.FindGameObjectsWithTag("hitCircle").Length == 1)
             {
+                //Switch on hitted object's tag by the gaze
                 switch (hit.transform.gameObject.tag)
                 {
-                    case "hitCircle":
+                    case "hitCircle": //if the tag is hitCircle, reduce the size of the circle
                         ReduceCircle(hit.transform.gameObject);
                         break;
-                    case "Finish":
+                    case "Finish": //show the result, size of every circle
                         sc.Result();
                         break;
-                    case "Respawn":
+                    case "Respawn": //reset all circles so we can try again
                         sc.DestroyAllCircles(true);
                         break;
-                    default:
+                    default: //by default we extend the size of the circle
                         ExtendCircle(GameObject.FindGameObjectWithTag("hitCircle").gameObject);
                         return;
                 }
             }
             else
             {
+                //after Retry button is focused
                 if (hit.transform.gameObject.tag == "Respawn")
                 {
                     sc.DestroyAllCircles(true);
                 }
+                //after Resume button is focused
                 if (hit.transform.gameObject.tag == "Resume")
                 {
                     sc.DestroyAllCircles();
@@ -56,17 +62,34 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reduce the size of the circle
+    /// </summary>
+    /// <param name="circle">GameObject of the current circle</param>
     private void ReduceCircle(GameObject circle)
     {
+        //10f * Time.deltaTime so the computers speed doesn't affect the speed
         circle.transform.localScale =
         new Vector3(circle.transform.localScale.x - 10f * Time.deltaTime,
         0.1f, circle.transform.localScale.z - 10f * Time.deltaTime);
+        // var childs = circle.GetComponentsInChildren<Transform>();
+        // foreach (Transform child in childs)
+        // {
+        //     child.localScale = new Vector3(child.localScale.x + 10f * Time.deltaTime,
+        //     child.localScale.y + 10f * Time.deltaTime, 0.0001f);
+        // }
     }
 
+    /// <summary>
+    /// Extend the size of the circle
+    /// </summary>
+    /// <param name="circle">GameObject of the current circle</param>
     private void ExtendCircle(GameObject circle)
     {
+        //if it's smaller than the max circle size
         if (circle.transform.localScale.x < 30)
         {
+            //2f * Time.deltaTime so the computers speed doesn't affect the speed
             circle.transform.localScale =
             new Vector3(circle.transform.localScale.x + 2f * Time.deltaTime,
             0.1f, circle.transform.localScale.z + 2f * Time.deltaTime);
