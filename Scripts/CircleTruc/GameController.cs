@@ -5,18 +5,18 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
-    private RayCastF da;
+    private CircleData da;
     private RaycastHit hit;
-    // private Camera mainCamera;
-    private GameObject mainCamera;
+    private Camera mainCamera;
+    // private GameObject mainCamera;
     private SpawnCircle sc;
 
     // Use this for initialization
     void Start()
     {
-        // mainCamera = Camera.main;
-        mainCamera = GameObject.FindGameObjectWithTag("EditorOnly").gameObject;
-        da = mainCamera.GetComponent<RayCastF>();
+        mainCamera = Camera.main;
+        // mainCamera = GameObject.FindGameObjectWithTag("EditorOnly").gameObject;
+        da = mainCamera.GetComponent<CircleData>();
         var spawnCircle = GameObject.Find("Quadri");
         sc = spawnCircle.GetComponent<SpawnCircle>();
     }
@@ -24,6 +24,14 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("hitCircle").gameObject);
+            // print(sc.circleFinalSize[0] + " + " + sc.circleFinalSize[1] + " + " +sc.circleFinalSize[2] + " + " +sc.circleFinalSize[3] + " + " +sc.circleFinalSize[4] + " + " +
+            // sc.circleFinalSize[5] + " + " +sc.circleFinalSize[6]);
+            // sc.Result();
+        }
+
         if (Physics.Raycast(da.ray, out hit))
         {
             //if there is max 1 circle on the grid

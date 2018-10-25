@@ -32,7 +32,7 @@ public class CircleLife : MonoBehaviour
         isBigger = true;
         isTTFF = true;
 
-        Destroy(gameObject, 5f);
+        //Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
@@ -59,7 +59,8 @@ public class CircleLife : MonoBehaviour
         if (currentSize.x <= 0 || nbOfSwitch > 5)
         {
             //save the finalsize of the circle and destroy it
-            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
+            sc.circleFinalSize[index] = GameObject.FindGameObjectWithTag("hitCircle").transform.localScale.x;
+            print(index + " size " + sc.circleFinalSize[index]);
             Destroy(gameObject);
         }
         //every second reset the number of switch between reducing and extending the circle's size

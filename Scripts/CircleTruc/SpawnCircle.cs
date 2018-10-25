@@ -26,20 +26,21 @@ public class SpawnCircle : MonoBehaviour
     {
         canvasParent = GameObject.Find("Quadri");
         index = 0;
-        Destroy(countObj, 3f);
+        Destroy(countObj, 2.4f);
     }
 
     // Update is called once per frame
     void Update()
     {
         countDown -= Time.deltaTime;
-        if (countDown > 0)
+        if (countObj != null)
         {
             countObj.text = System.Math.Round(countDown, 0).ToString();
             return;
         }
 
-        if (GameObject.FindGameObjectWithTag("hitCircle") == null)
+        if (GameObject.FindGameObjectsWithTag("hitCircle").Length < 1
+        && GameObject.FindGameObjectsWithTag("hitCircle").Length < 5)
         {
             if (isVisited.Contains(false))
             {

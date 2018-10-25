@@ -19,7 +19,7 @@ MonoBehaviour:
     IP: 127.0.0.1
     IPHeader: '>tcp://127.0.0.1:'
     PORT: 50020
-    subport: 49685
+    subport: 50361
     isLocal: 1
     confidenceThreshold: 0.6
     PupilVersion: 1.8.26
@@ -56,11 +56,11 @@ MonoBehaviour:
       samplesPerDepth: 120
     samplesToIgnoreForEyeMovement: 10
     rightEyeTranslation:
-    - 20.630241
+    - 6.901622
     - 0
     - 0
     leftEyeTranslation:
-    - -20.6303
+    - -6.901622
     - 0
     - 0
   customGUIVariables:
