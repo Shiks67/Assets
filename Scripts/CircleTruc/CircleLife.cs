@@ -15,6 +15,7 @@ public class CircleLife : MonoBehaviour
     public bool isTTFF;
     private SpawnCircle sc;
     private int index;
+    public float lifeTime;
 
     public void Init(int index)
     {
@@ -31,8 +32,6 @@ public class CircleLife : MonoBehaviour
         isSmaller = true;
         isBigger = true;
         isTTFF = true;
-
-        //Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
@@ -59,7 +58,7 @@ public class CircleLife : MonoBehaviour
         if (currentSize.x <= 0 || nbOfSwitch > 5)
         {
             //save the finalsize of the circle and destroy it
-            sc.circleFinalSize[index] = GameObject.FindGameObjectWithTag("hitCircle").transform.localScale.x;
+            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
             print(index + " size " + sc.circleFinalSize[index]);
             Destroy(gameObject);
         }
@@ -69,6 +68,12 @@ public class CircleLife : MonoBehaviour
         {
             limitTimer = 1f;
             nbOfSwitch = 0;
+        }
+        lifeTime -= Time.deltaTime;
+        if (lifeTime < 0)
+        {
+            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
+            Destroy(gameObject);
         }
     }
 

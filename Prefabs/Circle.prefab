@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TTFF: 0
   isTTFF: 0
+  lifeTime: 4
 --- !u!114 &114423894905430632
 MonoBehaviour:
   m_ObjectHideFlags: 1

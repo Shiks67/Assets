@@ -13,7 +13,7 @@ public class SpawnCircle : MonoBehaviour
     new Vector3(-30f,0f,-0.1f), new Vector3(0f,0f,-0.1f), new Vector3(30f,0f,-0.1f),
     new Vector3(-30f,-30f,-0.1f), new Vector3(0f,-30f,-0.1f), new Vector3(30f,-30f,-0.1f)};
 
-    public float[] circleFinalSize = new float[] { 30, 30, 30, 30, 30, 30, 30, 30, 30 };
+    public float[] circleFinalSize = new float[9];
     private bool[] isVisited = new bool[9];
 
     private int index;

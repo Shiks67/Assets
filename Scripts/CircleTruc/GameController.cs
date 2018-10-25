@@ -27,8 +27,6 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K))
         {
             Destroy(GameObject.FindGameObjectWithTag("hitCircle").gameObject);
-            // print(sc.circleFinalSize[0] + " + " + sc.circleFinalSize[1] + " + " +sc.circleFinalSize[2] + " + " +sc.circleFinalSize[3] + " + " +sc.circleFinalSize[4] + " + " +
-            // sc.circleFinalSize[5] + " + " +sc.circleFinalSize[6]);
             // sc.Result();
         }
 

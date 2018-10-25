@@ -348,15 +348,15 @@ MonoBehaviour:
   spawnObject: {fileID: 1039620438093140, guid: e4f7d4cd00ebad9479056167793d0b7d,
     type: 2}
   circleFinalSize:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
   countObj: {fileID: 78629547}
 --- !u!114 &100253812
 MonoBehaviour:
