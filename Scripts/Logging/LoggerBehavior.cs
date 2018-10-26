@@ -24,6 +24,8 @@ namespace RockVR.Video.Demo
 
         //CircleTruc log var
         private GameObject circleObject;
+        private float gazePosx;
+        private float gazePosy;
         private float timer;
         private float TTFF;
 
@@ -37,6 +39,8 @@ namespace RockVR.Video.Demo
         {
             _toLog = new List<object>();
             dedicatedCapture = Camera.main;
+            gazePosx = Camera.main.gameObject.GetComponent<CircleData>().hit.point.x;
+            gazePosy = Camera.main.gameObject.GetComponent<CircleData>().hit.point.y;
         }
 
         private void Update()
@@ -64,7 +68,8 @@ namespace RockVR.Video.Demo
         {
             if (PupilData._2D.GazePosition != Vector2.zero)
             {
-                gazeToWorld = dedicatedCapture.ViewportToWorldPoint(new Vector3(PupilData._2D.GazePosition.x, PupilData._2D.GazePosition.y, Camera.main.nearClipPlane));
+                gazeToWorld = dedicatedCapture.ViewportToWorldPoint(new Vector3
+                (PupilData._2D.GazePosition.x, PupilData._2D.GazePosition.y, Camera.main.nearClipPlane));
             }
 
             //var raycastHit = EyeRay.CurrentlyHit;
@@ -79,8 +84,10 @@ namespace RockVR.Video.Demo
 
                 j = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilData._2D.GazePosition.x, 3) : double.NaN,
                 k = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilData._2D.GazePosition.y, 3) : double.NaN,
-                l = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(gazeToWorld.x, 3) : double.NaN,
-                m = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(gazeToWorld.y, 3) : double.NaN,
+                // l = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(gazeToWorld.x, 3) : double.NaN,
+                // m = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(gazeToWorld.y, 3) : double.NaN,
+                lbis = gazePosx,
+                mbis = gazePosy,
                 n = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.FloatFromDictionary(PupilTools.gazeDictionary, "confidence"), 3) : double.NaN, // confidence value calculated after calibration 
 
                 circleSize = circleObject != null ? Math.Round(circleObject.transform.localScale.x, 3) : double.NaN,

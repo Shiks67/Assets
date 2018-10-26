@@ -17,14 +17,14 @@ public class CircleData : MonoBehaviour
     Vector2 gazePointCenter;
     public Vector3 viewportPoint;
     private LineRenderer heading;
-
+    public RaycastHit hit;
 
     // Use this for initialization
     void Start()
     {
         PupilData.calculateMovingAverage = true;
         heading = gameObject.GetComponent<LineRenderer>();
-		calibrationDemo = gameObject.GetComponent<CalibrationDemo> ();
+        calibrationDemo = gameObject.GetComponent<CalibrationDemo>();
         mainCamera2 = Camera.main;
     }
 
@@ -34,7 +34,7 @@ public class CircleData : MonoBehaviour
         {
             PupilGazeTracker.Instance.StartVisualizingGaze();
             //PupilTools.IsGazing = true;
-			//PupilTools.SubscribeTo ("gaze");
+            //PupilTools.SubscribeTo ("gaze");
         }
     }
     // Update is called once per frame
@@ -57,7 +57,6 @@ public class CircleData : MonoBehaviour
         }
         heading.SetPosition(0, mainCamera2.transform.position - mainCamera2.transform.up);
         ray = mainCamera2.ViewportPointToRay(viewportPoint);
-        RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
             heading.SetPosition(1, hit.point);
