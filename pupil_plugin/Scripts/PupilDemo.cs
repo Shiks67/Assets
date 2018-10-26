@@ -39,13 +39,11 @@ public class PupilDemo : MonoBehaviour
 					// Do stuff
 					break;
 				case "confidence":
-				case "timestamp":
-				case "diameter":
-					var valueForKey = PupilTools.FloatFromDictionary (dictionary, item.Key);
+					print(PupilTools.FloatFromDictionary (dictionary, item.Key));
 					// Do stuff
 					break;
 				case "norm_pos":
-					var positionForKey = PupilTools.VectorFromDictionary (dictionary, item.Key);
+					//print("Norm : " +PupilTools.VectorFromDictionary (dictionary, item.Key));
 					// Do stuff
 					break;
 				case "ellipse":
@@ -59,8 +57,7 @@ public class PupilDemo : MonoBehaviour
 							// Do stuff
 							break;
 						case "center":
-						case "axes":
-							var vector = PupilTools.ObjectToVector (pupilEllipse.Value);
+							print(PupilTools.ObjectToVector (pupilEllipse.Value));
 							// Do stuff
 							break;
 						default:
