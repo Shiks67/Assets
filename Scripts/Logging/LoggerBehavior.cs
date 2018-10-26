@@ -24,8 +24,7 @@ namespace RockVR.Video.Demo
 
         //CircleTruc log var
         private GameObject circleObject;
-        private float gazePosx;
-        private float gazePosy;
+        private string gazePosx, gazePosy;
         private float timer;
         private float TTFF;
 
@@ -39,21 +38,23 @@ namespace RockVR.Video.Demo
         {
             _toLog = new List<object>();
             dedicatedCapture = Camera.main;
-            gazePosx = Camera.main.gameObject.GetComponent<CircleData>().hit.point.x;
-            gazePosy = Camera.main.gameObject.GetComponent<CircleData>().hit.point.y;
         }
 
         private void Update()
         {
             if (GameObject.FindGameObjectsWithTag("hitCircle").Length == 1)
             {
-                CircleData();
+                gazePosx = ((Camera.main.gameObject.GetComponent<CircleData>().hit.point.x * 10) - 
+                GameObject.FindGameObjectWithTag("Respawn").transform.position.x).ToString("F2");
+                gazePosy = ((Camera.main.gameObject.GetComponent<CircleData>().hit.point.y * 10) - 
+                GameObject.FindGameObjectWithTag("Respawn").transform.position.y).ToString("F2");
+                CircleInfo();
                 DoLog();
                 AddToLog();
             }
         }
 
-        private void CircleData()
+        private void CircleInfo()
         {
             if (circleObject != GameObject.FindGameObjectWithTag("hitCircle").gameObject)
                 circleObject = GameObject.FindGameObjectWithTag("hitCircle").gameObject;

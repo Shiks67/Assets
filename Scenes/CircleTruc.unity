@@ -1168,7 +1168,6 @@ GameObject:
   - component: {fileID: 1518820614}
   - component: {fileID: 1518820613}
   - component: {fileID: 1518820616}
-  - component: {fileID: 1518820612}
   - component: {fileID: 1518820611}
   m_Layer: 0
   m_Name: Main Camera
@@ -1183,7 +1182,7 @@ LineRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1518820610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1269,21 +1268,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &1518820612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1518820610}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53ba0cad6f751c4f97069716de55cd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _3D: 0
-  Marker2dDistance: 10
-  gazeLoc: {x: 0, y: 0, z: 0}
-  viewportPoint: {x: 0, y: 0, z: 0}
 --- !u!81 &1518820613
 AudioListener:
   m_ObjectHideFlags: 0
