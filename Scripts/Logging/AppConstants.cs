@@ -5,7 +5,7 @@ public static class AppConstants
 
     #region General Constants
 
-    public static string DefaultEyeTrackingFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\_GazeData";
+    public static string DefaultEyeTrackingFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Arthur_GazeData";
     #endregion
 
     // not used
