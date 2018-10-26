@@ -31,18 +31,16 @@ public class EyePoss : MonoBehaviour {
 			{
 				switch (item.Key)
 				{
-				case "topic":
-				case "method":
+				// case "topic":
+				// case "method":
 				case "id":
 					var textForKey = PupilTools.StringFromDictionary (dictionary, item.Key);
-					print(textForKey);
 					// Do stuff
 					break;
-				case "confidence":
-				case "timestamp":
+				// case "confidence":
+				// case "timestamp":
 				case "diameter":
 					var valueForKey = PupilTools.FloatFromDictionary (dictionary, item.Key);
-					print(valueForKey);
 					// Do stuff
 					break;
 				case "norm_pos":
@@ -58,13 +56,12 @@ public class EyePoss : MonoBehaviour {
 						{
 						case "angle":
 							var angle = (float)(double)pupilEllipse.Value;
-							print(angle);
 							// Do stuff
 							break;
-						case "center":
+						// case "center":
 						case "axes":
 							var vector = PupilTools.ObjectToVector (pupilEllipse.Value);
-							print(vector);
+							print("axe : " + PupilTools.ObjectToVector (pupilEllipse.Value));
 							// Do stuff
 							break;
 						default:
