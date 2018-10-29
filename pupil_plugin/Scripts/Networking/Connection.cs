@@ -22,6 +22,8 @@ public class Connection
 	public bool isLocal = true;
     public float confidenceThreshold = 0.6f;
 
+	public float confidence;
+
 	private Dictionary<string,SubscriberSocket> _subscriptionSocketForTopic;
 	private Dictionary<string,SubscriberSocket> subscriptionSocketForTopic
 	{
@@ -169,7 +171,7 @@ public class Connection
 					case "pupil.0":
 					case "pupil.1":
 						var dictionary = MessagePackSerializer.Deserialize<Dictionary<string,object>> (mStream);
-						var confidence = PupilTools.FloatFromDictionary(dictionary,"confidence");
+						confidence = PupilTools.FloatFromDictionary(dictionary,"confidence");
 						if ( PupilTools.IsCalibrating )
 						{
 							string eyeID = PupilTools.StringFromDictionary(dictionary,"id");

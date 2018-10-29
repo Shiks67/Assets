@@ -44,10 +44,8 @@ namespace RockVR.Video.Demo
         {
             if (GameObject.FindGameObjectsWithTag("hitCircle").Length == 1)
             {
-                gazePosx = ((Camera.main.gameObject.GetComponent<CircleData>().hit.point.x * 10) - 
-                GameObject.FindGameObjectWithTag("Respawn").transform.position.x).ToString("F2");
-                gazePosy = ((Camera.main.gameObject.GetComponent<CircleData>().hit.point.y * 10) - 
-                GameObject.FindGameObjectWithTag("Respawn").transform.position.y).ToString("F2");
+                gazePosx = (GameObject.FindGameObjectWithTag("GazeMarker").transform.localPosition.x * 10).ToString("F2");
+                gazePosy = (GameObject.FindGameObjectWithTag("GazeMarker").transform.localPosition.y * 10).ToString("F2");
                 CircleInfo();
                 DoLog();
                 AddToLog();
@@ -89,11 +87,11 @@ namespace RockVR.Video.Demo
                 // m = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(gazeToWorld.y, 3) : double.NaN,
                 lbis = gazePosx,
                 mbis = gazePosy,
-                n = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.FloatFromDictionary(PupilTools.gazeDictionary, "confidence"), 3) : double.NaN, // confidence value calculated after calibration 
+                // n = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.FloatFromDictionary(PupilTools.gazeDictionary, "confidence"), 3) : double.NaN, // confidence value calculated after calibration 
+                n = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.Connection.confidence, 3) : double.NaN, // confidence value calculated after calibration 
 
                 circleSize = circleObject != null ? Math.Round(circleObject.transform.localScale.x, 3) : double.NaN,
                 TimeToFirstFix = TTFF != 0 ? Math.Round(TTFF, 3) : double.NaN
-
                 /* 
                 // Baking tray variables
                 o = SceneManage.loadTestScene == 2 ? SceneManage.getViveCtrlRight.transform.position.x : double.NaN,
