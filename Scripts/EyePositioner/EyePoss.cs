@@ -26,53 +26,44 @@ public class EyePoss : MonoBehaviour
 
     void CustomReceiveData(string topic, Dictionary<string, object> dictionary, byte[] thirdFrame = null)
     {
-        if (topic.StartsWith("pupil"))
+        if (topic.StartsWith("pupil.1"))
         {
             foreach (var item in dictionary)
             {
                 switch (item.Key)
                 {
-                    // case "topic":
-                    // case "method":
-                    // case "id":
-                    //     var textForKey = PupilTools.StringFromDictionary(dictionary, item.Key);
-                    //     // Do stuff
-                    //     break;
-                    case "confidence":
-                        print("Confidence : " + PupilTools.FloatFromDictionary(dictionary, item.Key));
-                        break;
-                    // // case "timestamp":
-                    // case "diameter":
-                    //     var valueForKey = PupilTools.FloatFromDictionary(dictionary, item.Key);
-                    //     // Do stuff
-                    //     break;
                     case "norm_pos":
                         var positionForKey = PupilTools.VectorFromDictionary(dictionary, item.Key);
                         print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
-                        // Do stuff
+                        if (positionForKey.x != 0 && positionForKey.y != 1)
+                        {
+                            positionForKey.x -= 0.5f;
+                            positionForKey.y -= 0.5f;
+                            GameObject.FindGameObjectWithTag("lEye").transform.localPosition = positionForKey;
+                        }
                         break;
-                    // case "ellipse":
-                    //     var dictionaryForKey = PupilTools.DictionaryFromDictionary(dictionary, item.Key);
-                    //     foreach (var pupilEllipse in dictionaryForKey)
-                    //     {
-                    //         switch (pupilEllipse.Key.ToString())
-                    //         {
-                    //             case "angle":
-                    //                 var angle = (float)(double)pupilEllipse.Value;
-                    //                 // Do stuff
-                    //                 break;
-                    //             // case "center":
-                    //             case "axes":
-                    //                 var vector = PupilTools.ObjectToVector(pupilEllipse.Value);
-                    //                 // print("Axes : " + PupilTools.ObjectToVector(pupilEllipse.Value));
-                    //                 // Do stuff
-                    //                 break;
-                    //             default:
-                    //                 break;
-                    //         }
-                    //     }
-                    //     // Do stuff
-                    //     break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        if (topic.StartsWith("pupil.0"))
+        {
+            foreach (var item in dictionary)
+            {
+                switch (item.Key)
+                {
+                    case "norm_pos":
+                        var positionForKey = PupilTools.VectorFromDictionary(dictionary, item.Key);
+                        print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
+                        if (positionForKey.x != 0 && positionForKey.y != 1)
+                        {
+                            positionForKey.x -= 0.5f;
+                            positionForKey.y -= 0.5f;
+                            GameObject.FindGameObjectWithTag("rEye").transform.localPosition = positionForKey;
+                        }
+                        break;
                     default:
                         break;
                 }

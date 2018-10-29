@@ -152,7 +152,8 @@ public class Connection
 					if ( PupilTools.ReceiveDataIsSet )
 					{
 						PupilTools.ReceiveData( msgType, MessagePackSerializer.Deserialize<Dictionary<string,object>> (mStream), thirdFrame);
-						continue;
+						// Uncomment if this is not the problem for skipping gazepoint
+						// continue;
 					}
 
 					switch(msgType)

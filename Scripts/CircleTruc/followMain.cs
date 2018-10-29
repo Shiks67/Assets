@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class followMain : MonoBehaviour {
 
-	private Transform maincam;
+	public GameObject followObject;
 
 	// Use this for initialization
 	void Start () {
-		maincam = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.transform.rotation = maincam.rotation;
-		gameObject.transform.position = maincam.position;
+		gameObject.transform.rotation = followObject.transform.rotation;
+		gameObject.transform.position = followObject.transform.position;
 	}
 }
