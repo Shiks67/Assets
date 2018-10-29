@@ -39,6 +39,7 @@ public class EyePoss : MonoBehaviour
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
+                            positionForKey.x *= -1;
                             GameObject.FindGameObjectWithTag("lEye").transform.localPosition = positionForKey;
                         }
                         break;
@@ -61,6 +62,7 @@ public class EyePoss : MonoBehaviour
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
+                            positionForKey.y *= -1;
                             GameObject.FindGameObjectWithTag("rEye").transform.localPosition = positionForKey;
                         }
                         break;
