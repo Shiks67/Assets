@@ -34,7 +34,7 @@ public class EyePoss : MonoBehaviour
                 {
                     case "norm_pos":
                         var positionForKey = PupilTools.VectorFromDictionary(dictionary, item.Key);
-                        print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
+                        // print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
                         if (positionForKey.x != 0 && positionForKey.y != 1)
                         {
                             positionForKey.x -= 0.5f;
@@ -42,6 +42,25 @@ public class EyePoss : MonoBehaviour
                             positionForKey.x *= -1;
                             GameObject.FindGameObjectWithTag("lEye").transform.localPosition = positionForKey;
                         }
+                        break;
+                    case "ellipse":
+                        var dictionaryForKey = PupilTools.DictionaryFromDictionary(dictionary, item.Key);
+                        foreach (var pupilEllipse in dictionaryForKey)
+                        {
+                            switch (pupilEllipse.Key.ToString())
+                            {
+                                case "center":
+                                    // var center = PupilTools.ObjectToVector(pupilEllipse.Value);
+                                    // // center.x -= 0.5f;
+                                    // // center.y -= 0.5f;
+                                    // // center.x *= -1;
+                                    // GameObject.FindGameObjectWithTag("lcenter").transform.localPosition = center;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        // Do stuff
                         break;
                     default:
                         break;
@@ -57,7 +76,7 @@ public class EyePoss : MonoBehaviour
                 {
                     case "norm_pos":
                         var positionForKey = PupilTools.VectorFromDictionary(dictionary, item.Key);
-                        print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
+                        // print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
                         if (positionForKey.x != 0 && positionForKey.y != 1)
                         {
                             positionForKey.x -= 0.5f;
@@ -65,6 +84,25 @@ public class EyePoss : MonoBehaviour
                             positionForKey.y *= -1;
                             GameObject.FindGameObjectWithTag("rEye").transform.localPosition = positionForKey;
                         }
+                        break;
+                    case "ellipse":
+                        var dictionaryForKey = PupilTools.DictionaryFromDictionary(dictionary, item.Key);
+                        foreach (var pupilEllipse in dictionaryForKey)
+                        {
+                            switch (pupilEllipse.Key.ToString())
+                            {
+                                case "center":
+                                    // var center = PupilTools.ObjectToVector(pupilEllipse.Value);
+                                    // // center.x -= 0.5f;
+                                    // // center.y -= 0.5f;
+                                    // // center.x *= -1;
+                                    // GameObject.FindGameObjectWithTag("rcenter").transform.localPosition = center;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        // Do stuff
                         break;
                     default:
                         break;
