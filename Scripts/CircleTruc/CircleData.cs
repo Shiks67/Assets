@@ -11,9 +11,7 @@ public class CircleData : MonoBehaviour
     private CalibrationDemo calibrationDemo;
     public Vector3 gazeLoc;
     public Ray ray;
-    private Transform mainCamera;
-
-    private Camera mainCamera2;
+    private Camera mainCamera;
     Vector2 gazePointCenter;
     public Vector3 viewportPoint;
     private LineRenderer heading;
@@ -25,7 +23,7 @@ public class CircleData : MonoBehaviour
         PupilData.calculateMovingAverage = true;
         heading = gameObject.GetComponent<LineRenderer>();
         calibrationDemo = gameObject.GetComponent<CalibrationDemo>();
-        mainCamera2 = Camera.main;
+        mainCamera = Camera.main;
     }
 
     void OnEnable()
@@ -55,8 +53,8 @@ public class CircleData : MonoBehaviour
             gazePointCenter = PupilData._2D.GazePosition;
             viewportPoint = new Vector3(gazePointCenter.x, gazePointCenter.y, 1f);
         }
-        heading.SetPosition(0, mainCamera2.transform.position - mainCamera2.transform.up);
-        ray = mainCamera2.ViewportPointToRay(viewportPoint);
+        heading.SetPosition(0, mainCamera.transform.position - mainCamera.transform.up);
+        ray = mainCamera.ViewportPointToRay(viewportPoint);
         if (Physics.Raycast(ray, out hit))
         {
             heading.SetPosition(1, hit.point);
@@ -71,7 +69,7 @@ public class CircleData : MonoBehaviour
     {
         gazeLoc = PupilData._3D.GazePosition;
         //marker.localPosition = PupilData._3D.GazePosition;
-        ray = new Ray(mainCamera.position, mainCamera.rotation * gazeLoc * 100);
-        Debug.DrawRay(mainCamera.position, mainCamera.rotation * gazeLoc * 100);
+        ray = new Ray(mainCamera.transform.position, mainCamera.transform.rotation * gazeLoc * 10);
+        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.rotation * gazeLoc * 10);
     }
 }

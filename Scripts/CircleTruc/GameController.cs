@@ -5,18 +5,16 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
-    private RayCastF da;
+    private CircleData da;
     private RaycastHit hit;
-    //private Camera mainCamera;
-    private GameObject mainCamera;
+    // private GameObject mainCamera;
     private SpawnCircle sc;
 
     // Use this for initialization
     void Start()
     {
-        // mainCamera = Camera.main;
-        mainCamera = GameObject.FindGameObjectWithTag("EditorOnly").gameObject;
-        da = mainCamera.GetComponent<RayCastF>();
+        // da = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<RayCastF>();
+        da = Camera.main.GetComponent<CircleData>();
         var spawnCircle = GameObject.Find("Quadri");
         sc = spawnCircle.GetComponent<SpawnCircle>();
     }

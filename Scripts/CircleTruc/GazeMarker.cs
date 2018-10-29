@@ -5,12 +5,11 @@ using UnityEngine;
 public class GazeMarker : MonoBehaviour
 {
 
-    private RayCastF da;
+    private CircleData da;
 
     void Start()
     {
-        da = GameObject.FindGameObjectWithTag("EditorOnly").
-        GetComponent<RayCastF>();
+        da = Camera.main.GetComponent<CircleData>();
     }
 
     // Update is called once per frame
