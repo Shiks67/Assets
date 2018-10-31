@@ -29,7 +29,7 @@ public class ColorChanging : MonoBehaviour
         waitTime += Time.deltaTime;
         if (waitTime < timer)
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.magenta;
+            gameObject.GetComponent<Renderer>().material.color = Color.white;
 
         }
         if (waitTime > timer)
