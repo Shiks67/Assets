@@ -27,7 +27,7 @@ public static class AppConstants
     "imageset_id;imageset_order;obj_id;obj_pos_x;obj_pos_y;obj_pos_z;gaze_obj_x;gaze_obj_y;gaze_obj_z;";*/
 
     public const string CsvFirstRow = "time;framerate;circle_pos_x;circle_pos_y; " +
-     "pupilData_gaze_x;pupilData_gaze_y;gaze_on_grid_x;gaze_on_grid_y;gaze_Confidence;" +
+     "pupilData_gaze_x;pupilData_gaze_y;gaze_on_grid_x;gaze_on_grid_y;Left_eye_conf;Right_eye_conf;" +
      "circle_radius;Time_To_First_Fix;";
 
     #endregion
