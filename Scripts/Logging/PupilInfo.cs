@@ -23,8 +23,8 @@ public class PupilInfo : MonoBehaviour
         countDown -= Time.deltaTime;
         if (countDown < 0)
         {
-            lconf.text = "lConf\n" + (PupilTools.Connection.confidence1 * 100) + "%";
-            rconf.text = "rConf\n" + (PupilTools.Connection.confidence0 * 100) + "%";
+            lconf.text = "Left conf\n" + (PupilTools.Connection.confidence1 * 100) + "%";
+            rconf.text = "Right conf\n" + (PupilTools.Connection.confidence0 * 100) + "%";
             countDown = refreshTime;
         }
     }

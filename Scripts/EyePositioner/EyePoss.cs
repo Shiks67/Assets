@@ -14,6 +14,7 @@ public class EyePoss : MonoBehaviour
 
     public float refreshTime;
     private float countDown;
+    private float confidence0, confidence1;
 
     void Start()
     {
@@ -47,8 +48,8 @@ public class EyePoss : MonoBehaviour
                         countDown -= Time.deltaTime;
                         if (countDown < 0)
                         {
-                            var confidence = PupilTools.FloatFromDictionary(dictionary, item.Key);
-                            lconf.text = "lConf\n" + (confidence * 100) + "%";
+                            confidence1 = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                            lconf.text = "Left confidence\n" + (confidence1 * 100) + "%";
                         }
                         break;
                     case "norm_pos":
@@ -58,8 +59,15 @@ public class EyePoss : MonoBehaviour
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
-                            positionForKey.x *= -1;
                             leftPupil.transform.localPosition = positionForKey;
+                            if(confidence1 > 60)
+                            {
+                                leftPupil.GetComponent<Renderer>().material.color = Color.green;
+                            }
+                            else
+                            {
+                                leftPupil.GetComponent<Renderer>().material.color = Color.red;                                
+                            }
                         }
                         break;
                     case "ellipse":
@@ -96,8 +104,8 @@ public class EyePoss : MonoBehaviour
                     case "confidence":
                         if (countDown < 0)
                         {
-                            var confidence = PupilTools.FloatFromDictionary(dictionary, item.Key);
-                            rconf.text = "rConf\n" + (confidence * 100) + "%";
+                            confidence0 = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                            rconf.text = "Right Confidence\n" + (confidence0 * 100) + "%";
                             countDown = refreshTime;
                         }
                         break;
@@ -108,8 +116,15 @@ public class EyePoss : MonoBehaviour
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
-                            positionForKey.y *= -1;
                             rightPupil.transform.localPosition = positionForKey;
+                            if(confidence0 > 60)
+                            {
+                                rightPupil.GetComponent<Renderer>().material.color = Color.green;
+                            }
+                            else
+                            {
+                                rightPupil.GetComponent<Renderer>().material.color = Color.red;                                
+                            }
                         }
                         break;
                     case "ellipse":
