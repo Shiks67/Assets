@@ -97,7 +97,7 @@ public class EyePoss : MonoBehaviour
                         if (countDown < 0)
                         {
                             var confidence = PupilTools.FloatFromDictionary(dictionary, item.Key);
-                            rconf.text = "lConf\n" + (confidence * 100) + "%";
+                            rconf.text = "rConf\n" + (confidence * 100) + "%";
                             countDown = refreshTime;
                         }
                         break;
