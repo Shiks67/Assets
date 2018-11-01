@@ -173,6 +173,17 @@ public class Connection
                         case "pupil.0":
                             var dictionary0 = MessagePackSerializer.Deserialize<Dictionary<string, object>>(mStream);
                             confidence0 = PupilTools.FloatFromDictionary(dictionary0, "confidence");
+                            if (PupilTools.IsCalibrating)
+                            {
+                                string eyeID = PupilTools.StringFromDictionary(dictionary0, "id");
+                                PupilTools.UpdateCalibrationConfidence(eyeID, confidence0);
+                                break;
+                            }
+                            if ((confidence0 > confidenceThreshold) && msgType.StartsWith("gaze"))
+                            {
+                                PupilTools.gazeDictionary = dictionary0;
+                            }
+
                             break;
                         case "pupil.1":
                             var dictionary = MessagePackSerializer.Deserialize<Dictionary<string, object>>(mStream);

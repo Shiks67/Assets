@@ -15,17 +15,17 @@ public class ColorChanging : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
-        oldParent = gameObject.transform.parent;
-        gameObject.transform.SetParent(null);
+        // oldParent = gameObject.transform.parent;
+        // gameObject.transform.SetParent(null);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(oldParent == null)
-        {
-            Destroy(gameObject);
-        }
+        // if (oldParent == null)
+        // {
+        //     Destroy(gameObject);
+        // }
         waitTime += Time.deltaTime;
         if (waitTime < timer)
         {

@@ -692,7 +692,7 @@ Prefab:
       propertyPath: m_Text
       value: 'Press ''c'' to start Calibration
 
-        Press ''d'' to remove the eye squares'
+        Press ''d'' to remove the eyes squares'
       objectReference: {fileID: 0}
     - target: {fileID: 20090834490174222, guid: 1a363ebd9791e7d48a02435c46d956ab,
         type: 2}
@@ -781,6 +781,10 @@ Prefab:
       propertyPath: m_Name
       value: rPupil
       objectReference: {fileID: 0}
+    - target: {fileID: 1613517599086408, guid: 36dd98f642af266419555fb6170f831f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36dd98f642af266419555fb6170f831f, type: 2}
   m_IsPrefabAsset: 0
@@ -831,6 +835,10 @@ Prefab:
     - target: {fileID: 1374404484492164, guid: 36f34965b8a2dca4b9f2b41a62cc9ca2, type: 2}
       propertyPath: m_Name
       value: lPupil
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217582194238606, guid: 36f34965b8a2dca4b9f2b41a62cc9ca2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36f34965b8a2dca4b9f2b41a62cc9ca2, type: 2}
