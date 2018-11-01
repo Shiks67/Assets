@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EyePoss : MonoBehaviour
 {
+
+    public Text lconf;
+    public Text rconf;
+
+    public GameObject leftPupil;
+    public GameObject rightPupil;
+
+    public float refreshTime;
+    private float countDown;
 
     void Start()
     {
@@ -11,6 +21,7 @@ public class EyePoss : MonoBehaviour
         PupilTools.OnDisconnecting += StopPupilSubscription;
 
         PupilTools.OnReceiveData += CustomReceiveData;
+        countDown = refreshTime;
     }
 
     void StartPupilSubscription()
@@ -32,15 +43,23 @@ public class EyePoss : MonoBehaviour
             {
                 switch (item.Key)
                 {
+                    case "confidence":
+                        countDown -= Time.deltaTime;
+                        if (countDown < 0)
+                        {
+                            var confidence = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                            lconf.text = "lConf\n" + (confidence * 100) + "%";
+                        }
+                        break;
                     case "norm_pos":
                         var positionForKey = PupilTools.VectorFromDictionary(dictionary, item.Key);
                         // print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
-                        if (positionForKey.x != 0 && positionForKey.y != 1)
+                        if (positionForKey.x != 0 && positionForKey.y != 1 && leftPupil != null)
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
                             positionForKey.x *= -1;
-                            GameObject.FindGameObjectWithTag("lEye").transform.localPosition = positionForKey;
+                            leftPupil.transform.localPosition = positionForKey;
                         }
                         break;
                     case "ellipse":
@@ -74,15 +93,23 @@ public class EyePoss : MonoBehaviour
             {
                 switch (item.Key)
                 {
+                    case "confidence":
+                        if (countDown < 0)
+                        {
+                            var confidence = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                            rconf.text = "lConf\n" + (confidence * 100) + "%";
+                            countDown = refreshTime;
+                        }
+                        break;
                     case "norm_pos":
                         var positionForKey = PupilTools.VectorFromDictionary(dictionary, item.Key);
                         // print("norm_pos_x : " + positionForKey.x + " / norm_pos_y : " + positionForKey.y);
-                        if (positionForKey.x != 0 && positionForKey.y != 1)
+                        if (positionForKey.x != 0 && positionForKey.y != 1 && rightPupil != null)
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
                             positionForKey.y *= -1;
-                            GameObject.FindGameObjectWithTag("rEye").transform.localPosition = positionForKey;
+                            rightPupil.transform.localPosition = positionForKey;
                         }
                         break;
                     case "ellipse":
