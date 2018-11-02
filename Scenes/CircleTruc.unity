@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lconf: {fileID: 1510047446}
   rconf: {fileID: 947037543}
-  refreshTime: 0.3
+  refreshTime: 0.2
 --- !u!1 &1652858463
 GameObject:
   m_ObjectHideFlags: 0

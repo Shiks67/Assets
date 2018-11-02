@@ -59,8 +59,9 @@ public class EyePoss : MonoBehaviour
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
+                            positionForKey.x *= -1;
                             leftPupil.transform.localPosition = positionForKey;
-                            if(confidence1 > 60)
+                            if(confidence1 > .6)
                             {
                                 leftPupil.GetComponent<Renderer>().material.color = Color.green;
                             }
@@ -116,8 +117,9 @@ public class EyePoss : MonoBehaviour
                         {
                             positionForKey.x -= 0.5f;
                             positionForKey.y -= 0.5f;
+                            positionForKey.y *= -1;
                             rightPupil.transform.localPosition = positionForKey;
-                            if(confidence0 > 60)
+                            if(confidence0 > .6)
                             {
                                 rightPupil.GetComponent<Renderer>().material.color = Color.green;
                             }

@@ -26,17 +26,20 @@ public class SpawnCircle : MonoBehaviour
     {
         canvasParent = GameObject.Find("Quadri");
         index = 0;
-        Destroy(countObj, 2.4f);
     }
 
     // Update is called once per frame
     void Update()
     {
         countDown -= Time.deltaTime;
-        if (countObj != null)
+        if (countDown > 0)
         {
             countObj.text = System.Math.Round(countDown, 0).ToString();
             return;
+        }
+        if(countDown < 0)
+        {
+            countObj.gameObject.SetActive(false);
         }
 
         if (GameObject.FindGameObjectsWithTag("hitCircle").Length < 1
@@ -100,6 +103,8 @@ public class SpawnCircle : MonoBehaviour
         {
             circleFinalSize = new float[] { 30, 30, 30, 30, 30, 30, 30, 30, 30 };
             isVisited = new bool[9];
+            countObj.gameObject.SetActive(true);
+            countDown = 3f;
         }
         var allCircles = GameObject.FindGameObjectsWithTag("hitCircle");
         for (var i = 0; i < allCircles.Length; i++)

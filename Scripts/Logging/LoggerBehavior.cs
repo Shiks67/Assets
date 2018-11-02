@@ -91,8 +91,8 @@ namespace RockVR.Video.Demo
                 lbis = gazePosx,
                 mbis = gazePosy,
                 // n = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.FloatFromDictionary(PupilTools.gazeDictionary, "confidence"), 3) : double.NaN, // confidence value calculated after calibration 
-                confLeft = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.Connection.confidence1, 3) : double.NaN, // confidence value calculated after calibration 
-                confRight = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilTools.Connection.confidence0, 3) : double.NaN, // confidence value calculated after calibration 
+                confLeft = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilInfo.confidence1, 3) : double.NaN, // confidence value calculated after calibration 
+                confRight = PupilData._2D.GazePosition != Vector2.zero ? Math.Round(PupilInfo.confidence0, 3) : double.NaN, // confidence value calculated after calibration 
 
                 circleSize = circleObject != null ? Math.Round(circleObject.transform.localScale.x, 3) : double.NaN,
                 TimeToFirstFix = TTFF != 0 ? Math.Round(TTFF, 3) : double.NaN

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PupilInfo : MonoBehaviour
 {
@@ -11,21 +12,78 @@ public class PupilInfo : MonoBehaviour
     public float refreshTime;
     private float countDown;
 
+    public static float confidence0, confidence1;
+
+
     // Use this for initialization
     void Start()
     {
+        // PupilTools.OnConnected += StartPupilSubscription;
+        // PupilTools.OnDisconnecting += StopPupilSubscription;
+        PupilTools.SubscribeTo("pupil.");
+        PupilTools.OnReceiveData += CustomReceiveData;
         countDown = refreshTime;
     }
 
-    // Update is called once per frame
-    void Update()
+    void StartPupilSubscription()
     {
-        countDown -= Time.deltaTime;
-        if (countDown < 0)
+        PupilTools.CalibrationMode = Calibration.Mode._2D;
+        PupilTools.SubscribeTo("pupil.");
+    }
+
+    void StopPupilSubscription()
+    {
+        PupilTools.UnSubscribeFrom("pupil.");
+    }
+
+    void CustomReceiveData(string topic, Dictionary<string, object> dictionary, byte[] thirdFrame = null)
+    {
+        if (topic.StartsWith("pupil.1"))
         {
-            lconf.text = "Left conf\n" + (PupilTools.Connection.confidence1 * 100) + "%";
-            rconf.text = "Right conf\n" + (PupilTools.Connection.confidence0 * 100) + "%";
-            countDown = refreshTime;
+            foreach (var item in dictionary)
+            {
+                switch (item.Key)
+                {
+                    case "confidence":
+                        countDown -= Time.deltaTime;
+                        if (countDown < 0)
+                        {
+                            confidence1 = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                            lconf.text = "Left conf\n" + (confidence1 * 100) + "%";
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
+
+        if (topic.StartsWith("pupil.0"))
+        {
+            foreach (var item in dictionary)
+            {
+                switch (item.Key)
+                {
+                    case "confidence":
+                        if (countDown < 0)
+                        {
+                            confidence0 = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                            rconf.text = "Right conf\n" + (confidence0 * 100) + "%";
+                            countDown = refreshTime;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    void OnDisable()
+    {
+        PupilTools.OnConnected -= StartPupilSubscription;
+        PupilTools.OnDisconnecting -= StopPupilSubscription;
+
+        PupilTools.OnReceiveData -= CustomReceiveData;
     }
 }
