@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6, y: -0.02}
+  m_AnchoredPosition: {x: 0.6, y: -0.09}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339588421
@@ -312,7 +312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.6, y: -0.02}
+  m_AnchoredPosition: {x: -0.6, y: -0.09}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609052985
@@ -452,7 +452,7 @@ Prefab:
     - target: {fileID: 114039770744552444, guid: 1a363ebd9791e7d48a02435c46d956ab,
         type: 2}
       propertyPath: availableScenes.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224528166007893496, guid: 1a363ebd9791e7d48a02435c46d956ab,
         type: 2}
@@ -575,7 +575,7 @@ Prefab:
     - target: {fileID: 114039770744552444, guid: 1a363ebd9791e7d48a02435c46d956ab,
         type: 2}
       propertyPath: availableScenes.Array.data[0]
-      value: CircleTruc
+      value: CircleTest
       objectReference: {fileID: 0}
     - target: {fileID: 114039770744552444, guid: 1a363ebd9791e7d48a02435c46d956ab,
         type: 2}
@@ -608,6 +608,11 @@ Prefab:
         type: 2}
       propertyPath: m_CullingMask.m_Bits
       value: 823
+      objectReference: {fileID: 0}
+    - target: {fileID: 224981369576734126, guid: 1a363ebd9791e7d48a02435c46d956ab,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a363ebd9791e7d48a02435c46d956ab, type: 2}

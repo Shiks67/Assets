@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EyePoss : MonoBehaviour
+public class EyePositioner : MonoBehaviour
 {
 
     public Text lconf;
