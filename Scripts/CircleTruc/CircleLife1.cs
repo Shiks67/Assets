@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class CircleLife : MonoBehaviour
+public class CircleLife1 : MonoBehaviour
 {
 
     private Vector3 lastSize;
@@ -43,38 +43,43 @@ public class CircleLife : MonoBehaviour
             return;
         if (isTTFF) //update TTFF time until the circle is focused by the gaze point
             TTFF += Time.deltaTime;
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
+            Destroy(gameObject);
+        }
         //current size of the circle
-        currentSize = gameObject.transform.localScale;
-        if (currentSize.x < lastSize.x)
-        {
-            Reducing();
-            //put isTTFF false so the TTFF time doesn't update anymore
-            isTTFF = false;
-        }
-        if (currentSize.x > lastSize.x)
-        {
-            Extending();
-        }
+        // currentSize = gameObject.transform.localScale;
+        // if (currentSize.x < lastSize.x)
+        // {
+        //     Reducing();
+        //     //put isTTFF false so the TTFF time doesn't update anymore
+        //     isTTFF = false;
+        // }
+        // if (currentSize.x > lastSize.x)
+        // {
+        //     Extending();
+        // }
         //if the size of the circle is 0 or less OR if the size edit switched more than 5 times
-        if (currentSize.x <= 0 || nbOfSwitch > 5)
-        {
-            //save the finalsize of the circle and destroy it
-            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
-            Destroy(gameObject);
-        }
+        // if (currentSize.x <= 0 || nbOfSwitch > 5)
+        // {
+        //     //save the finalsize of the circle and destroy it
+        //     sc.circleFinalSize[index] = gameObject.transform.localScale.x;
+        //     Destroy(gameObject);
+        // }
         //every second reset the number of switch between reducing and extending the circle's size
-        limitTimer -= Time.deltaTime;
-        if (limitTimer < 0)
-        {
-            limitTimer = 1f;
-            nbOfSwitch = 0;
-        }
-        lifeTime -= Time.deltaTime;
-        if (lifeTime < 0)
-        {
-            sc.circleFinalSize[index] = gameObject.transform.localScale.x;
-            Destroy(gameObject);
-        }
+        // limitTimer -= Time.deltaTime;
+        // if (limitTimer < 0)
+        // {
+        //     limitTimer = 1f;
+        //     nbOfSwitch = 0;
+        // }
+        // lifeTime -= Time.deltaTime;
+        // if (lifeTime < 0)
+        // {
+        //     sc.circleFinalSize[index] = gameObject.transform.localScale.x;
+        //     Destroy(gameObject);
+        // }
     }
 
     /// <summary>
@@ -107,15 +112,15 @@ public class CircleLife : MonoBehaviour
 
     private void ColorLevel()
     {
-        if(gameObject.transform.localScale.x > 0)
+        if (gameObject.transform.localScale.x > 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.green;
         }
-        if(gameObject.transform.localScale.x > 10)
+        if (gameObject.transform.localScale.x > 10)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
         }
-        if(gameObject.transform.localScale.x > 20)
+        if (gameObject.transform.localScale.x > 20)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
         }

@@ -22,12 +22,6 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            Destroy(GameObject.FindGameObjectWithTag("hitCircle").gameObject);
-            // sc.Result();
-        }
-
         if (Physics.Raycast(da.ray, out hit))
         {
             //if there is max 1 circle on the grid
