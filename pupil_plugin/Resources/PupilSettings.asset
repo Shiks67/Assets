@@ -23,7 +23,7 @@ MonoBehaviour:
     isLocal: 1
     confidenceThreshold: 0.6
     confidence1: 0
-    confidence0: 0.43026036
+    confidence0: 0
     PupilVersion: 1.8.26
     PupilVersionNumbers: 01000000080000001a000000
   calibration:
