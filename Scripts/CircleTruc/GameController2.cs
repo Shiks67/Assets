@@ -1,24 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController2 : MonoBehaviour
 {
 
     private CircleData da;
     private RaycastHit hit;
     // private GameObject mainCamera;
-    private SpawnCircle sc;
+    private SpawnCircle1 sc;
 
     // Use this for initialization
     void Start()
     {
         // da = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<RayCastF>();
         da = Camera.main.GetComponent<CircleData>();
-        var spawnCircle = GameObject.Find("Quadri");
-        sc = spawnCircle.GetComponent<SpawnCircle>();
-        SceneManager.UnloadSceneAsync("CircleTest 1");
+        var spawnCircle = GameObject.Find("Quadri1");
+        sc = spawnCircle.GetComponent<SpawnCircle1>();
     }
 
     // Update is called once per frame

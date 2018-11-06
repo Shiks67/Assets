@@ -13,7 +13,7 @@ public class CircleLife1 : MonoBehaviour
     public float TTFF;
     private bool isBigger, isSmaller;
     public bool isTTFF;
-    private SpawnCircle sc;
+    private SpawnCircle1 sc;
     private int index;
     public float lifeTime;
 
@@ -27,8 +27,8 @@ public class CircleLife1 : MonoBehaviour
     {
         nbOfSwitch = 0;
         lastSize = gameObject.transform.localScale;
-        var gameC = GameObject.Find("Quadri");
-        sc = gameC.GetComponent<SpawnCircle>();
+        var gameC = GameObject.Find("Quadri1");
+        sc = gameC.GetComponent<SpawnCircle1>();
         isSmaller = true;
         isBigger = true;
         isTTFF = true;

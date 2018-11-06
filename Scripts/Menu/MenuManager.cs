@@ -24,6 +24,7 @@ public class MenuManager : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Y))
             {
+                SceneManager.UnloadSceneAsync("CircleTest 1");
                 StartCoroutine(LoadCurrentScene());
                 menu.gameObject.SetActive(!menu.activeSelf);
             }

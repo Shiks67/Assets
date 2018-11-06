@@ -318,10 +318,10 @@ GameObject:
   - component: {fileID: 100253814}
   - component: {fileID: 100253813}
   - component: {fileID: 100253812}
-  - component: {fileID: 100253810}
   - component: {fileID: 100253811}
+  - component: {fileID: 100253810}
   m_Layer: 5
-  m_Name: Quadri
+  m_Name: Quadri1
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,10 +343,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100253809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f57412b3dfe68b4c9b15c234c13034d, type: 3}
+  m_Script: {fileID: 11500000, guid: dc31720fe29cf8749a0f99c26791cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1039620438093140, guid: e4f7d4cd00ebad9479056167793d0b7d,
+  spawnObject: {fileID: 1039620438093140, guid: 3d5600ab20bc33e49a6e2b06bdd393b6,
     type: 2}
   circleFinalSize:
   - 30
@@ -960,12 +960,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1600389672575842, guid: 1d9657987593ab54996c0329b1b5f21a, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224584559681486568, guid: 1d9657987593ab54996c0329b1b5f21a,
         type: 2}
       propertyPath: m_LocalScale.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114986544078454764, guid: 1d9657987593ab54996c0329b1b5f21a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d9657987593ab54996c0329b1b5f21a, type: 2}
@@ -1091,7 +1096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57, y: 26}
+  m_AnchoredPosition: {x: 58.5, y: 26}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947037543
@@ -1320,7 +1325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.4, y: 26}
+  m_AnchoredPosition: {x: -58.3, y: 26}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510047446
@@ -1621,9 +1626,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580673202}
-  - component: {fileID: 1580673201}
   - component: {fileID: 1580673203}
   - component: {fileID: 1580673204}
+  - component: {fileID: 1580673201}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1639,7 +1644,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580673200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3a74e95bfc13f4e93438c387e68ab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d2a2a41473a2ec4081c4ada9e81e9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1580673202
@@ -1661,7 +1666,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1580673200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b20455d494f42a4f8a4e7d021e3971a, type: 3}
   m_Name: 
@@ -1672,7 +1677,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1580673200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bacd2ada2edd944bba4495be720bb4, type: 3}
   m_Name: 

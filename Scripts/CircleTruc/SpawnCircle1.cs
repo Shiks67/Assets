@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class SpawnCircle : MonoBehaviour
+public class SpawnCircle1 : MonoBehaviour
 {
 
     public GameObject spawnObject;
@@ -24,7 +24,7 @@ public class SpawnCircle : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        canvasParent = GameObject.Find("Quadri");
+        canvasParent = GameObject.Find("Quadri1");
         index = 0;
     }
 
@@ -74,7 +74,7 @@ public class SpawnCircle : MonoBehaviour
         newObject.transform.localScale = new Vector3(30, 0.1f, 30);
         newObject.transform.localRotation = Quaternion.Euler(90, 0, 0);
         newObject.transform.localPosition = spawnArea[id];
-        newObject.GetComponent<CircleLife>().Init(id);
+        newObject.GetComponent<CircleLife1>().Init(id);
         if (result)
         {
             newObject.transform.localScale =
