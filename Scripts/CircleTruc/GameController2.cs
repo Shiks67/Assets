@@ -67,9 +67,12 @@ public class GameController2 : MonoBehaviour
     private void ReduceCircle(GameObject circle)
     {
         //10f * Time.deltaTime so the computers speed doesn't affect the speed
-        circle.transform.localScale =
-        new Vector3(circle.transform.localScale.x - 15f * (Time.deltaTime * 2),
-        0.1f, circle.transform.localScale.z - 15f * (Time.deltaTime * 2));
+        if (circle.transform.localScale.x > 0)
+        {
+            circle.transform.localScale =
+           new Vector3(circle.transform.localScale.x - 15f * (Time.deltaTime * 2),
+           0.1f, circle.transform.localScale.z - 15f * (Time.deltaTime * 2));
+        }
         // var childs = circle.GetComponentsInChildren<Transform>();
         // foreach (Transform child in childs)
         // {

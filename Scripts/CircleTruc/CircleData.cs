@@ -8,7 +8,7 @@ public class CircleData : MonoBehaviour
 
     public bool _3D = false;
     //public Transform marker;
-    private CalibrationDemo calibrationDemo;
+    // private CalibrationDemo calibrationDemo;
     public Vector3 gazeLoc;
     public Ray ray;
     private Camera mainCamera;
@@ -22,7 +22,7 @@ public class CircleData : MonoBehaviour
     {
         PupilData.calculateMovingAverage = true;
         heading = gameObject.GetComponent<LineRenderer>();
-        calibrationDemo = gameObject.GetComponent<CalibrationDemo>();
+        // calibrationDemo = gameObject.GetComponent<CalibrationDemo>();
         mainCamera = Camera.main;
     }
 

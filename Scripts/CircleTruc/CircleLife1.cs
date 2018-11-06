@@ -26,7 +26,7 @@ public class CircleLife1 : MonoBehaviour
     void Start()
     {
         nbOfSwitch = 0;
-        lastSize = gameObject.transform.localScale;
+        // lastSize = gameObject.transform.localScale;
         var gameC = GameObject.Find("Quadri1");
         sc = gameC.GetComponent<SpawnCircle1>();
         isSmaller = true;
@@ -87,7 +87,7 @@ public class CircleLife1 : MonoBehaviour
     /// </summary>
     private void Reducing()
     {
-        lastSize = currentSize;
+        // lastSize = currentSize;
         if (isSmaller)
         {
             nbOfSwitch++;
@@ -101,7 +101,7 @@ public class CircleLife1 : MonoBehaviour
     /// </summary>
     private void Extending()
     {
-        lastSize = currentSize;
+        // lastSize = currentSize;
         if (isBigger)
         {
             nbOfSwitch++;
