@@ -12,7 +12,7 @@ public class PupilInfo : MonoBehaviour
     public float refreshTime;
     private float countDown;
 
-    public static float confidence0, confidence1;
+    public static float confidence0, confidence1, gazeConfidence;
 
 
     // Use this for initialization
@@ -21,6 +21,7 @@ public class PupilInfo : MonoBehaviour
         // PupilTools.OnConnected += StartPupilSubscription;
         // PupilTools.OnDisconnecting += StopPupilSubscription;
         PupilTools.SubscribeTo("pupil.");
+        PupilTools.SubscribeTo("gaze");
         PupilTools.OnReceiveData += CustomReceiveData;
         countDown = refreshTime;
     }
@@ -29,11 +30,13 @@ public class PupilInfo : MonoBehaviour
     {
         PupilTools.CalibrationMode = Calibration.Mode._2D;
         PupilTools.SubscribeTo("pupil.");
+        PupilTools.SubscribeTo("gaze");
     }
 
     void StopPupilSubscription()
     {
         PupilTools.UnSubscribeFrom("pupil.");
+        PupilTools.UnSubscribeFrom("gaze");
     }
 
     void CustomReceiveData(string topic, Dictionary<string, object> dictionary, byte[] thirdFrame = null)
@@ -69,7 +72,6 @@ public class PupilInfo : MonoBehaviour
                         {
                             confidence0 = PupilTools.FloatFromDictionary(dictionary, item.Key);
                             rconf.text = "Right conf\n" + (confidence0 * 100) + "%";
-                            countDown = refreshTime;
                         }
                         break;
                     default:
@@ -77,6 +79,25 @@ public class PupilInfo : MonoBehaviour
                 }
             }
         }
+
+        if(topic.StartsWith("gaze"))
+        {
+            foreach (var item in dictionary)
+            {
+                switch(item.Key)
+                {
+                    case "confidence":
+                        if (countDown < 0)
+                        {
+                            gazeConfidence = PupilTools.FloatFromDictionary(dictionary, item.Key);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        countDown = refreshTime;
     }
 
     void OnDisable()

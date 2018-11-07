@@ -70,8 +70,8 @@ public class GameController2 : MonoBehaviour
         if (circle.transform.localScale.x > 0)
         {
             circle.transform.localScale =
-           new Vector3(circle.transform.localScale.x - 15f * (Time.deltaTime * 2),
-           0.1f, circle.transform.localScale.z - 15f * (Time.deltaTime * 2));
+           new Vector3(circle.transform.localScale.x - 15f * (Time.deltaTime * 3),
+           0.1f, circle.transform.localScale.z - 15f * (Time.deltaTime * 3));
         }
         // var childs = circle.GetComponentsInChildren<Transform>();
         // foreach (Transform child in childs)
